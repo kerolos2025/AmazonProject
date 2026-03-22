@@ -64,6 +64,8 @@ using (var scope = app.Services.CreateScope())
     catch (Exception ex)
     {
         app.Logger.LogError(ex, "An error occurred while seeding the Shipping data.");
+        Console.WriteLine("Shipping seeding Error.");
+
         throw;
     }
 }
