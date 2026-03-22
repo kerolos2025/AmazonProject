@@ -1,0 +1,6 @@
+@Shepping.Api_HostAddress = http://localhost:5068
+
+GET {{Shepping.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
