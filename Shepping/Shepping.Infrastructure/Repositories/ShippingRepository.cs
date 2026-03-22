@@ -19,6 +19,12 @@ namespace Shepping.Infrastructure.Repositories
         {
             _context = context;
         }
+        public async Task<Shipping> GetShippingById(string id)
+        {
+            return await _context.Shipping
+            .Find(p => p.Id == id)
+            .FirstOrDefaultAsync();
+        }
         public async Task<List<Shipping>> GetAllShipping()
         {
             return await _context.Shipping.Find(p => true).ToListAsync();

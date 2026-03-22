@@ -29,6 +29,16 @@ namespace Shepping.Api.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("[action]/{Id}", Name = "GetShippingById")]
+        [ProducesResponseType(typeof(ShippingResponseDto), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ShippingResponseDto>> GetShippingById(string Id)
+        {
+            var query = new GetShippingByIdQuery(Id);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
         [HttpGet]
         [Route("[action]/{name}", Name = "GetShippingByName")]
         [ProducesResponseType(typeof(ShippingResponseDto), (int)HttpStatusCode.OK)]

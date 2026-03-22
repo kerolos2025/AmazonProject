@@ -10,6 +10,7 @@ namespace Shepping.Core.Repositories
     public interface IShippingRepository
     {
         Task<List<Shipping>> GetAllShipping();
+        Task<Shipping> GetShippingById(string id);
         Task<Shipping> GetShippingByName(string name);
         Task<Shipping> CreateShipping(Shipping shipping);
         Task<bool> UpdateShipping(Shipping shipping);
