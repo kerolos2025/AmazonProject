@@ -59,6 +59,7 @@ using (var scope = app.Services.CreateScope())
     {
         await seeder.SeedAsync();
         app.Logger.LogInformation("Shipping seeding completed.");
+        Console.WriteLine("Shipping seeding completed.");
     }
     catch (Exception ex)
     {
