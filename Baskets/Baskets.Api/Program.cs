@@ -1,7 +1,9 @@
 using Baskets.Application.Commands;
+using Baskets.Application.GrpcServices;
 using Baskets.Application.Mappers;
 using Baskets.Core.Repositories;
 using Baskets.Infrastructure.Repositories;
+using Discount.Grpc.Protos;
 using StackExchange.Redis;
 using System.Reflection;
 
@@ -45,6 +47,9 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(
 
 builder.Services.AddScoped<IBasketRepository,BasketRepository>();
 
+builder.Services.AddScoped<DiscountGrpcService>();
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
+    (cfg => cfg.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]));
 
 var app = builder.Build();
 

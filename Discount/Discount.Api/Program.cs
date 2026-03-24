@@ -1,3 +1,4 @@
+using Discount.Api.Service;
 using Discount.Application.Commands;
 using Discount.Application.Mappers;
 using Discount.Core.Repositories;
@@ -55,6 +56,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 builder.Services.AddTransient<DiscountSeeder>();
 
+builder.Services.AddGrpc();
+
 
 var app = builder.Build();
 
@@ -84,6 +87,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRouting();
 
 app.UseHttpsRedirection();
 
@@ -91,4 +95,12 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGrpcService<DiscountService>();
+    endpoints.MapGet("/", async context =>
+    {
+        await context.Response.WriteAsync("Communication with grpc endpoints must be made through a grpc client");
+    });
+});
 app.Run();
