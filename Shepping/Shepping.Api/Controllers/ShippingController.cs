@@ -27,7 +27,8 @@ namespace Shepping.Api.Controllers
         {
             var query = new GetAllShippingQuery();
             var result = await _mediator.Send(query);
-            return Ok(result);
+            
+            return Ok(Response<List<ShippingResponseDto>>.SuccessResponse(result));
         }
 
         [HttpGet]
@@ -37,7 +38,12 @@ namespace Shepping.Api.Controllers
         {
             var query = new GetShippingByIdQuery(Id);
             var result = await _mediator.Send(query);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<ShippingResponseDto>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<ShippingResponseDto>.SuccessResponse(result));
         }
         [HttpGet]
         [Route("[action]/{name}", Name = "GetShippingByName")]
@@ -46,7 +52,12 @@ namespace Shepping.Api.Controllers
         {
             var query = new GetShippingByNameQuery(name);
             var result = await _mediator.Send(query);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<ShippingResponseDto>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<ShippingResponseDto>.SuccessResponse(result));
         }
 
         [HttpPost]
@@ -57,7 +68,12 @@ namespace Shepping.Api.Controllers
         {
 
             var result = await _mediator.Send<ShippingResponseDto>(Command);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<ShippingResponseDto>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<ShippingResponseDto>.SuccessResponse(result));
         }
 
         [HttpPut]
@@ -67,7 +83,12 @@ namespace Shepping.Api.Controllers
         {
 
             var result = await _mediator.Send<bool>(Command);
-            return Ok(result);
+            if (result == false)
+            {
+                return Ok(Response<bool>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<bool>.SuccessResponse(result));
         }
 
         [HttpDelete]
@@ -79,7 +100,12 @@ namespace Shepping.Api.Controllers
             var command = new DeleteShippingCommand();
             command.Id = id;
             var result = await _mediator.Send<bool>(command);
-            return Ok(result);
+            if (result == false)
+            {
+                return Ok(Response<bool>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<bool>.SuccessResponse(result));
         }
     }
 }

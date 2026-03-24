@@ -27,7 +27,8 @@ namespace Products.Api.Controllers
             var command= new GetAllProductsQuery();
            
             var result = await _mediator.Send<List<ProductDTO>>(command);
-            return Ok(result);
+
+            return Ok(Response<List<ProductDTO>>.SuccessResponse(result));
         }
 
         [HttpGet("GetProductById")]
@@ -36,7 +37,12 @@ namespace Products.Api.Controllers
             var command = new GetProductByIdQuery(id);
             
             var result = await _mediator.Send<ProductDTO>(command);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<ProductDTO>.Fail("Product not found", statusCode: 404));
+
+            }
+            return Ok(Response<ProductDTO>.SuccessResponse(result));
         }
 
         [HttpPost]
@@ -45,7 +51,12 @@ namespace Products.Api.Controllers
         {
            
             var result = await _mediator.Send<ProductDTO>(command);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<ProductDTO>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<ProductDTO>.SuccessResponse(result));
         }
         [HttpPut]
         [Consumes("multipart/form-data")]
@@ -53,14 +64,24 @@ namespace Products.Api.Controllers
         {
            
             var result = await _mediator.Send<ProductDTO>(command);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<ProductDTO>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<ProductDTO>.SuccessResponse(result));
         }
         [HttpDelete("DeleteProduct/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var cmd = new DeleteProductCommand(id);
             var result = await _mediator.Send<bool>(cmd);
-            return Ok(result);
+            if (result == false)
+            {
+                return Ok(Response<bool>.Fail("Error Occureed", statusCode: 404));
+
+            }
+            return Ok(Response<bool>.SuccessResponse(result));
         }
     }
 }

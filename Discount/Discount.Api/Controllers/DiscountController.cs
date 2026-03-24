@@ -51,7 +51,12 @@ namespace Discount.Api.Controllers
         {
 
             var result = await _mediator.Send<DiscountsDTO>(command);
-            return Ok(result);
+            if (result == null)
+            {
+                return Ok(Response<DiscountsDTO>.Fail("Error Occured at Creating Discount", statusCode: 404));
+
+            }
+            return Ok(Response<DiscountsDTO>.SuccessResponse(result));
         }
 
         [HttpDelete("DeleteDiscount")]
@@ -59,7 +64,12 @@ namespace Discount.Api.Controllers
         {
             var command = new DeleteDiscountCommand(id);
             var result = await _mediator.Send<bool>(command);
-            return Ok(result);
+            if (result == false)
+            {
+                return Ok(Response<bool>.Fail("Error Occured at Deleting Discount", statusCode: 404));
+
+            }
+            return Ok(Response<bool>.SuccessResponse(result));
         }
     }
 }
