@@ -1,0 +1,6 @@
+@Baskets.Api_HostAddress = http://localhost:5249
+
+GET {{Baskets.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
