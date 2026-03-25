@@ -60,5 +60,19 @@ namespace Baskets.Api.Controllers
             }
             return Ok(Response<bool>.SuccessResponse(result));
         }
+
+        [HttpPost("CheckoutBasket")]
+        public async Task<IActionResult> CheckoutBasket(string userid)
+        {
+            var command = new CheckoutBasketCommand(userid);
+
+            var result = await _mediator.Send<bool>(command);
+            if (result == false)
+            {
+                return Ok(Response<bool>.Fail("Error Occured", statusCode: 404));
+
+            }
+            return Ok(Response<bool>.SuccessResponse(result));
+        }
     }
 }
