@@ -19,6 +19,10 @@ namespace Discount.Api.Service
         {
             var query = new GetDiscountByProductIdQuery(request.ProductId);
             var result = await _mediator.Send(query);
+            if (result==null)
+            {
+                return new CouponModel();
+            }
             CouponModel coupon=new CouponModel
             {
                 ProductId = result.ProductId,

@@ -35,7 +35,8 @@ namespace Baskets.Application.Handlers.Commands
                 foreach (var item in basket.Items)
                 {
                     var coupon = await _discountGrpcService.GetDiscount(item.ProductId);
-                    item.Price =(item.Price * coupon.Percentage)/100;
+                    if(coupon != null && coupon.Percentage!=null && coupon.Percentage!=0)
+                        item.Price =(item.Price * coupon.Percentage)/100;
                 }
                 await basketRepository.SetAsync(basket.UserId, basket);
                 return true;
