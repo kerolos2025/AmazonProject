@@ -1,5 +1,7 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Orders.Application.Commands;
+using Orders.Application.Consumer;
 using Orders.Application.Mappers;
 using Orders.Core.Repositories;
 using Orders.Infrastructure.Data.Contexts;
@@ -52,6 +54,30 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
 
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddScoped<BasketCheckoutConsumer>();
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<BasketCheckoutConsumer>();
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", 5672, "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        cfg.ReceiveEndpoint("basket-checkout-queue", e =>
+        {
+            e.ConfigureConsumer<BasketCheckoutConsumer>(context);
+        });
+      
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

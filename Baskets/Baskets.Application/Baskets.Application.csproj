@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\EventBus\EventBus.Messages\EventBus.Messages.csproj" />
     <ProjectReference Include="..\Baskets.Core\Baskets.Core.csproj" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="MassTransit" Version="8.3.6" />
+		<PackageReference Include="MassTransit.RabbitMQ" Version="8.3.6" />
+		
 		<PackageReference Include="MediatR" Version="14.0.0" />
 		<PackageReference Include="Grpc.AspNetCore" Version="2.76.0" />
 

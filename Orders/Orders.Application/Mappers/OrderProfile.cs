@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EventBus.Messages;
 using Orders.Application.Commands;
 using Orders.Application.Responses;
 using Orders.Core.Entities;
@@ -16,6 +17,7 @@ namespace Orders.Application.Mappers
         {
             CreateMap<OrderDTO, Order>().ReverseMap();
             CreateMap<CreateOrderCommand, Order>().ReverseMap();
+            CreateMap<BasketCheckoutEvent, Order>().ReverseMap();
         }
     }
 }
