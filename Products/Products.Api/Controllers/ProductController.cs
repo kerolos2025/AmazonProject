@@ -1,9 +1,11 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Products.Application.Commands;
 using Products.Application.Queries;
 using Products.Application.Responses;
+using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Products.Api.Controllers
@@ -22,8 +24,19 @@ namespace Products.Api.Controllers
         }
 
         [HttpGet("GetAllProducts")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> GetAllProducts()
         {
+            //var userId = User.FindFirst("uid")?.Value;
+            //var username = User.Identity?.Name;
+            //var roles = User.FindAll(ClaimTypes.Role)
+            //    .Select(r => r.Value)
+            //    .ToList();
+            //if (User.IsInRole("admin"))
+            //{
+            //    _logger.LogInformation("Admin user {Username} with ID {UserId} accessed GetAllProducts", username, userId);
+            //}
+
             var command= new GetAllProductsQuery();
            
             var result = await _mediator.Send<List<ProductDTO>>(command);

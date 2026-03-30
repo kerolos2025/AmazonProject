@@ -14,7 +14,7 @@ namespace Discount.Infrastructure.Data.Contexts
         {
 
             var optionBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionBuilder.UseSqlServer("Data Source=DESKTOP-AAOESE8\\SQLEXPRESS;Initial Catalog=DiscountDB;Integrated Security=True;Trust Server Certificate=True");
+            optionBuilder.UseSqlServer("Data Source=DESKTOP-AAOESE8\\SQLEXPRESS;Initial Catalog=DiscountDB;Integrated Security=True;Trust Server Certificate=True;Connection Timeout=60;");
             return new AppDbContext(optionBuilder.Options);
 
 
