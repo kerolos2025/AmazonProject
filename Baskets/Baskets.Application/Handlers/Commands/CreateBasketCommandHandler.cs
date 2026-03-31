@@ -42,6 +42,11 @@ namespace Baskets.Application.Handlers.Commands
                 return true;
             }catch(Exception ex)
             {
+                var folder = @"C:\inetpub\wwwroot\basketService\Logs";
+                Directory.CreateDirectory(folder); // مهم جدًا
+                var path= Path.Combine(folder, "log.txt");
+                var log = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex.InnerException.Message+ex.StackTrace}{Environment.NewLine}";
+                File.AppendAllText(path, log, Encoding.UTF8);
                 return false;
             }
         }

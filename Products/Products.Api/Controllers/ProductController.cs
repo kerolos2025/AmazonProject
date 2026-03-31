@@ -24,7 +24,7 @@ namespace Products.Api.Controllers
         }
 
         [HttpGet("GetAllProducts")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         public async Task<IActionResult> GetAllProducts()
         {
             //var userId = User.FindFirst("uid")?.Value;

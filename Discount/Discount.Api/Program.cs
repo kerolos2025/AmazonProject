@@ -81,14 +81,17 @@ using (var scope = app.Services.CreateScope())
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 app.UseRouting();
 
+
+// Enable gRPC-Web middleware (required when fronted by IIS)
+app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -97,7 +100,7 @@ app.MapControllers();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapGrpcService<DiscountService>();
+    endpoints.MapGrpcService<DiscountService>().EnableGrpcWeb();
     endpoints.MapGet("/", async context =>
     {
         await context.Response.WriteAsync("Communication with grpc endpoints must be made through a grpc client");

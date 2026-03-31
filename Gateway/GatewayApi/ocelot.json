@@ -13,7 +13,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Shipping/GetShippingById/{Id}",
@@ -29,7 +30,8 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
 
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Shipping/GetShippingByName/{name}",
@@ -44,7 +46,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Shipping/CreateShipping",
@@ -59,7 +62,8 @@
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Shipping/UpdateShipping",
@@ -74,7 +78,8 @@
       "UpstreamHttpMethod": [ "PUT" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Shipping/DeleteShippingItem",
@@ -89,7 +94,8 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Product/GetAllProducts",
@@ -104,7 +110,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Product/GetProductById",
@@ -119,7 +126,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Product",
@@ -134,7 +142,8 @@
       "UpstreamHttpMethod": [ "POST", "PUT" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Product/DeleteProduct/{id}",
@@ -149,7 +158,8 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Orders/GetOrderById",
@@ -164,7 +174,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Orders/GetOrderByUserId",
@@ -179,7 +190,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Orders/CreateOrder",
@@ -194,7 +206,8 @@
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Discount/GetDiscountById",
@@ -209,7 +222,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
 
     },
     {
@@ -225,7 +239,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Discount/CreateDiscount",
@@ -240,7 +255,8 @@
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Discount/DeleteDiscount",
@@ -255,7 +271,8 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Basket/GetBasketByUserId/GetBasketByUserId",
@@ -270,7 +287,8 @@
       "UpstreamHttpMethod": [ "GET" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Basket/CreateBasket/CreateBasket",
@@ -285,7 +303,8 @@
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Basket/DeleteBasket/DeleteBasket",
@@ -300,7 +319,8 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     },
     {
       "DownstreamPathTemplate": "/api/Basket/CheckoutBasket/CheckoutBasket",
@@ -315,7 +335,8 @@
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      }
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
     }
   ],
   "GlobalConfiguration": {

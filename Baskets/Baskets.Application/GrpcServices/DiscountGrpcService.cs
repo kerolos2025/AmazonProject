@@ -25,6 +25,11 @@ namespace Baskets.Application.GrpcServices
             }
             catch (RpcException ex) when (ex.StatusCode == StatusCode.NotFound)
             {
+                var folder = @"C:\inetpub\wwwroot\basketService\Logs";
+                Directory.CreateDirectory(folder); // مهم جدًا
+                var path = Path.Combine(folder, "log.txt");
+                var log = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex.InnerException.Message + ex.StackTrace}{Environment.NewLine}";
+                File.AppendAllText(path, log, Encoding.UTF8);
                 // Discount service returned NotFound for this product - treat as no discount
                 return null;
             }
